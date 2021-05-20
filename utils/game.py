@@ -18,6 +18,38 @@ def transpose_element(first_list: List[str],
 
 
 class Hangman:
+    """
+    A class that starts and manage a game of Hangman
+
+    ...
+
+    Attributes
+    ----------
+    possible_words : List[str]
+        a List of strings containing the possible words to guess
+    word_to_find : List[str]
+        a List of single characters that make up the chosen word to find
+    lives : int
+        an int representing the number of lives left
+    correctly_guessed_letters : List[str]
+        a List of strings containing the correctly guessed letters at their
+        correct position
+    wrongly_guessed_letters : List[str]
+        a List of strings containing the incorrectly guessed letters
+    turn_count : int
+        an int representing the current number of turns played
+    error_count : int
+        an int representing the current number of wrong guesses made during the
+        game
+    is_over : bool
+        a boolean False is the game is still ongoing and True if the game ended
+        because of too many errors
+
+    Methods
+    -------
+    says(sound=None)
+        Prints the animals name and what sound it makes
+    """
     def __init__(self):
         self.possible_words: List[str] = ['becode',
                                           'learning',
@@ -33,10 +65,11 @@ class Hangman:
         self.wrongly_guessed_letters: List[str] = []
         self.turn_count: int = 0
         self.error_count: int = 0
+        self.is_over = False
 
     def play(self):
         """
-        Take a letter as an input from the player
+        Core mechanics of the game. Take a single input from the player.
         :return None
         """
         guess: str = input("\nEnter a single letter: ")
@@ -62,12 +95,12 @@ class Hangman:
 
     def start_game(self):
         """
-        Initialize the Hangman game and start it
+        Initialize the Hangman game and start the game loop
         :return None
         """
         self.word_to_find = list(choice(self.possible_words).upper())
         self.correctly_guessed_letters = ["_"] * len(self.word_to_find)
-        while True:
+        while self.is_over is False:
             if self.lives == 0:
                 self.game_over()
                 break
@@ -81,17 +114,17 @@ class Hangman:
                 print(f"Incorrect guesses: "
                       f"{', '.join(self.wrongly_guessed_letters)}")
 
-    @staticmethod
-    def game_over():
+    def game_over(self):
         """
-        Print the game over message when lives reach 0
+        Print the game over message.
         :return None
         """
         print("Game over...")
+        self.is_over = True
 
     def well_played(self):
         """
-        Print the success message when the word is found
+        Print the success message.
         :return None
         """
         print(f"You found the word \"{''.join(self.word_to_find)}\" "
