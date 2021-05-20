@@ -19,36 +19,32 @@ def transpose_element(first_list: List[str],
 
 class Hangman:
     """
-    A class that starts and manage a game of Hangman
+    Starts and manage a game of Hangman
 
     ...
 
     Attributes
     ----------
     possible_words : List[str]
-        a List of strings containing the possible words to guess
+        contains the possible words to guess
     word_to_find : List[str]
-        a List of single characters that make up the chosen word to find
+        list of single characters that make up the chosen word to guess
     lives : int
-        an int representing the number of lives left
+        number of lives left
     correctly_guessed_letters : List[str]
-        a List of strings containing the correctly guessed letters at their
-        correct position
+        contains the correctly guessed letters at their correct position
     wrongly_guessed_letters : List[str]
-        a List of strings containing the incorrectly guessed letters
+        contains the incorrectly guessed letters
     turn_count : int
-        an int representing the current number of turns played
+        current number of turns played
     error_count : int
-        an int representing the current number of wrong guesses made during the
-        game
+        current number of wrong guesses made during the game
     is_over : bool
-        a boolean False is the game is still ongoing and True if the game ended
-        because of too many errors
-
+        if the game is over due to too many errors or not
     Methods
     -------
-    says(sound=None)
-        Prints the animals name and what sound it makes
+    play()
+        Initializes the Hangman game and starts the game loop.
     """
     def __init__(self):
         self.possible_words: List[str] = ['becode',
