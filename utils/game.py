@@ -22,7 +22,11 @@ class Hangman:
         self.possible_words: List[str] = ['becode',
                                           'learning',
                                           'mathematics',
-                                          'sessions']
+                                          'sessions',
+                                          'python',
+                                          'coding',
+                                          'programming',
+                                          'github']
         self.word_to_find: List[str] = []
         self.lives: int = 5
         self.correctly_guessed_letters: List[str] = []
@@ -35,7 +39,7 @@ class Hangman:
         Take a letter as an input from the player
         :return None
         """
-        guess: str = input("Enter a single letter: ")
+        guess: str = input("\nEnter a single letter: ")
         if len(guess) != 1:
             print("Invalid input, try again.")
             return
