@@ -2,9 +2,11 @@ from typing import List, Any
 from random import choice
 
 
-def transpose_element(first_list: List[str], second_list: List[str], element: Any) -> None:
+def transpose_element(first_list: List[str],
+                      second_list: List[str], element: Any) -> None:
     """
-    Place the element in the second list at the indices it was at in the first list
+    Place the element in the second list at the indices it was at in
+        the first list
     :param first_list: List to get the indices from
     :param second_list: List to transpose the element to
     :param element: Element to find and transpose
@@ -17,7 +19,10 @@ def transpose_element(first_list: List[str], second_list: List[str], element: An
 
 class Hangman:
     def __init__(self):
-        self.possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions']
+        self.possible_words: List[str] = ['becode',
+                                          'learning',
+                                          'mathematics',
+                                          'sessions']
         self.word_to_find: List[str] = []
         self.lives: int = 5
         self.correctly_guessed_letters: List[str] = []
@@ -35,11 +40,16 @@ class Hangman:
             print("Invalid input, try again.")
             return
         guess = guess.upper()  # Sanitize input
-        if guess in self.correctly_guessed_letters or guess in self.wrongly_guessed_letters:
+        if guess in self.correctly_guessed_letters \
+                or guess in self.wrongly_guessed_letters:
             print("You've already submitted this letter. Try again.")
             return
         elif guess in self.word_to_find:
-            transpose_element(self.word_to_find, self.correctly_guessed_letters, guess)
+            transpose_element(
+                self.word_to_find,
+                self.correctly_guessed_letters,
+                guess
+            )
         else:
             print("Incorrect guess :(")
             self.error_count += 1
@@ -64,7 +74,8 @@ class Hangman:
                 self.turn_count += 1
                 self.play()
                 print(f"Word: {''.join(self.correctly_guessed_letters)}")
-                print(f"Incorrect guesses: {', '.join(self.wrongly_guessed_letters)}")
+                print(f"Incorrect guesses: "
+                      f"{', '.join(self.wrongly_guessed_letters)}")
 
     @staticmethod
     def game_over():
