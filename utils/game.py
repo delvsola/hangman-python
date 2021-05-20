@@ -12,9 +12,7 @@ def transpose_element(first_list: List[str], second_list: List[str], element: An
     """
     indices = [i for i, x in enumerate(first_list) if x == element]
     for index in indices:
-        tmp = first_list[index]  # Swap buffer
-        first_list[index] = second_list[index]
-        second_list[index] = tmp
+        second_list[index] = first_list[index]
 
 
 class Hangman:
@@ -28,6 +26,7 @@ class Hangman:
         self.error_count: int = 0
 
     def play(self):
+        """"""
         guess: str = input("Enter a single letter: ")
         if len(guess) != 1:
             print("Invalid input, try again.")
