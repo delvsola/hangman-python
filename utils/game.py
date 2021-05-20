@@ -26,7 +26,10 @@ class Hangman:
         self.error_count: int = 0
 
     def play(self):
-        """"""
+        """
+        Take a letter as an input from the player
+        :return None
+        """
         guess: str = input("Enter a single letter: ")
         if len(guess) != 1:
             print("Invalid input, try again.")
@@ -44,7 +47,10 @@ class Hangman:
             self.wrongly_guessed_letters.append(guess)
 
     def start_game(self):
-        """Initialize the Hangman game and start it"""
+        """
+        Initialize the Hangman game and start it
+        :return None
+        """
         self.word_to_find = list(choice(self.possible_words).upper())
         self.correctly_guessed_letters = ["_"] * len(self.word_to_find)
         while True:
@@ -62,7 +68,16 @@ class Hangman:
 
     @staticmethod
     def game_over():
+        """
+        Print the game over message when lives reach 0
+        :return None
+        """
         print("Game over...")
 
     def well_played(self):
-        print(f"You found the word \"{self.word_to_find}\" in {self.turn_count} turns with {self.error_count} errors !")
+        """
+        Print the success message when the word is found
+        :return None
+        """
+        print(f"You found the word \"{''.join(self.word_to_find)}\" "
+              f"in {self.turn_count} turns with {self.error_count} errors !")
