@@ -134,7 +134,6 @@ class Hangman:
                   f"{', '.join(self.wrongly_guessed_letters)}")
             if self.lives == 0:
                 self.__game_over()
-                break
             elif "_" not in self.correctly_guessed_letters:
                 self.__well_played()
                 break
