@@ -3,6 +3,7 @@ from random import choice
 import platform  # For getting the operating system name
 import os
 
+#  Contains each frame of the hangman
 parts = ["  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
          "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
          "  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========",
