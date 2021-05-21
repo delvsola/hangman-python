@@ -156,4 +156,5 @@ class Hangman:
         :return None
         """
         print(f"You found the word \"{''.join(self.word_to_find)}\" "
-              f"in {self.turn_count} turns with {self.error_count} errors !")
+              f"in {self.turn_count} turns with {self.error_count} "
+              f"{'errors' if self.error_count > 1 else 'error'} !")
