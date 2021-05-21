@@ -4,12 +4,12 @@ import platform  # For getting the operating system name
 import os
 
 #  Contains each frame of the hangman
-parts = ["  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
-         "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
-         "  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========",
-         "  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========",
-         "  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========",
-         "  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n========="]
+_parts = ["  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
+          "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
+          "  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========",
+          "  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========",
+          "  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========",
+          "  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n========="]
 
 
 def clear_screen():
@@ -124,7 +124,7 @@ class Hangman:
         clear_screen()  # Clear the screen to prettify the game
         print("Welcome to the Hangman, will you guess the word ?")
         while self.is_over is False:
-            print(parts[self.error_count])
+            print(_parts[self.error_count])
             print(f"Word: {''.join(self.correctly_guessed_letters)}")
             print(f"Incorrect guesses: "
                   f"{', '.join(self.wrongly_guessed_letters)}")
