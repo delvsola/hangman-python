@@ -2,6 +2,7 @@ from typing import List, Any
 from random import choice
 import platform  # For getting the operating system name
 import os
+import sys
 
 #  Contains each frame of the hangman
 _parts = ["  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
@@ -91,7 +92,9 @@ class Hangman:
         Core mechanics of the game. Take a single input from the player.
         :return None
         """
-        guess: str = input("\nEnter a single letter: ")
+        guess: str = input("\nEnter your guess: ")
+        if guess.lower().strip() == "exit":
+            sys.exit(0)  # Gracefully exit the game if the users wants to
         clear_screen()  # Clear the screen to refresh it
         if len(guess) != 1:
             print("Invalid input, try again.")
@@ -122,7 +125,8 @@ class Hangman:
         self.word_to_find = list(choice(self.possible_words).upper())
         self.correctly_guessed_letters = ["_"] * len(self.word_to_find)
         clear_screen()  # Clear the screen to prettify the game
-        print("Welcome to the Hangman, will you guess the word ?")
+        print("Welcome to the Hangman, will you guess the word ? "
+              "(Type 'exit' to quit the game)")
         while self.is_over is False:
             print(_parts[self.error_count])
             print(f"Word: {''.join(self.correctly_guessed_letters)}")
